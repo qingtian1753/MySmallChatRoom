@@ -132,17 +132,20 @@ void ChatServer::handleAccept()
                 return ;
             }
         }
+        
+        if(SocketUtil::setsocketnonblocknodelay(client_fd)==-1)
+            return ;
+        
         if(!SocketUtil::inepoll(epfd,client_fd))
         {
             close(client_fd);
             std::cerr<<"client can not in epoll!"<<std::endl;
             return ;
         }
+        
         std::string welcome("Welcome to simple chat  "
         "use /name your_name to register your name\n");
-        if(SocketUtil::setsocketnonblocknodelay(client_fd)==-1)
-            return ;
-
+        
         std::cout<<"new client!"<<std::endl;
         clients[client_fd].name="qingtian";
         queueMessage(client_fd,welcome);
