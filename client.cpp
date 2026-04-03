@@ -1,17 +1,16 @@
-#include "chatclient.h"
-#include <iostream>
-
+#include "src/chatclient.h"
+#include  "src/Log.h"
 int main(int argc ,char ** argv)
 {
-    ChatClient cc;
+    ChatClient cc(10);
     if(argc!=3)
     {
-        std::cerr<<"Usage "<<"<server_ip><port>\n";
+        LOG_ERROR("Usage <server_ip><port>");
         return 1;
     }
     if(!cc.initclient(argv[1],std::stoi(argv[2])))
     {
-        std::cerr<<"client initialize failed!"<<std::endl;
+        LOG_ERROR("client initialize failed!");
         return 1;
     }
     cc.run();
