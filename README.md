@@ -1,2 +1,5 @@
 # MySmallChatRoom
 学习了26天的linxu网络编程做出的第一个小项目，存放一下我的学习成果，等我未来学了新知识我会进一步改善它
+
+
+第二版增加了日志类，将epoll单独抽出来了，避免逻辑全堆在server和client里，然后还封装了一个uniquefd类，用来管理socketfd，将socketfd的生命周期与uniquefd进行绑定，这样就舒服多了，然后还将处理客户的逻辑放到了新文件里，放到了handle命名空间里，这样就能进一步·简化chatserver的逻辑，之后还可以把chatclient里处理服务端的代码搬进来
