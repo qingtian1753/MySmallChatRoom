@@ -34,7 +34,7 @@ void ChatServer::run()
     while(running)
     {
         //每2s醒一次检查一下客户端连接情况
-        std::vector<epoll_event>fds(std::move(epoll.wait(2000)));
+        std::vector<epoll_event>fds(epoll.wait(2000));
         for(auto& ev : fds)
         {
             int fd=ev.data.fd;
