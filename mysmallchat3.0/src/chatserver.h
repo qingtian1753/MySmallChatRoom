@@ -26,8 +26,6 @@ public:
 private:
     //创建监听socket
     bool createListenSocket();
-    //创建epoll
-    bool createEpoll();
 
     void handleAccept();
     void initClient(UniqueFd&& fd);
